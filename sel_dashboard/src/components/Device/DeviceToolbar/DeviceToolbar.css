@@ -1,0 +1,45 @@
+.toolbar {
+  height: 58px;
+  min-height: 58px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f5f8fc;
+  border-bottom: 1px solid #dbe3ef;
+  padding: 0 28px;
+}
+
+.toolbar-button,
+.text-button {
+  height: 36px;
+  min-width: 90px;
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #cbd6e2;
+  border-radius: 6px;
+  background: #ffffff;
+
+  color: #06245c;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.toolbar-button:hover,
+.text-button:hover {
+  background: #eef4ff;
+  border-color: #9db4d2;
+}
+
+.toolbar-button:active,
+.text-button:active {
+  background: #dbeafe;
+}

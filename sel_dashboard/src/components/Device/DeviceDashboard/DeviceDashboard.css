@@ -1,0 +1,16 @@
+.dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f4f7fb;
+}
+
+.table-section {
+  flex: 1;
+  min-height: 0;
+  padding: 0 32px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

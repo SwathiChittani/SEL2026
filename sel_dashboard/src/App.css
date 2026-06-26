@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: #f4f7fb;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #06245c;
+}
+
+.page {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}

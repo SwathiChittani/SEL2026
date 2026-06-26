@@ -1,0 +1,72 @@
+.top-row {
+  height: 56px;
+  background: #003f82;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.sel-logo {
+  height: 56px;
+  width: auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.primary-button {
+  height: 40px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #2f6fff;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #245de6;
+}
+
+.logout-button {
+  height: 40px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #2f6fff;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #245de6;
+}
