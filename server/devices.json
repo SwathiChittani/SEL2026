@@ -1,0 +1,1292 @@
+[
+  {
+    "id": 1,
+    "name": "SEL-351 Feeder Protection Relay 01",
+    "ipAddress": "10.10.1.11",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Feeder protection and control"
+  },
+  {
+    "id": 2,
+    "name": "SEL-751 Feeder Protection Relay 01",
+    "ipAddress": "10.10.2.12",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Feeder protection, metering, and automation"
+  },
+  {
+    "id": 3,
+    "name": "SEL-421 Transmission Line Relay 01",
+    "ipAddress": "10.10.3.13",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "East Substation",
+    "criticality": "High",
+    "purpose": "Transmission line protection"
+  },
+  {
+    "id": 4,
+    "name": "SEL-T400L Time-Domain Line Protection 01",
+    "ipAddress": "10.10.4.14",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "West Substation",
+    "criticality": "High",
+    "purpose": "Ultra-high-speed line protection"
+  },
+  {
+    "id": 5,
+    "name": "SEL-487B Bus Differential Relay 01",
+    "ipAddress": "10.10.5.15",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Busbar differential protection"
+  },
+  {
+    "id": 6,
+    "name": "SEL-387 Transformer Protection Relay 01",
+    "ipAddress": "10.10.6.16",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Transmission Bay 2",
+    "criticality": "High",
+    "purpose": "Transformer differential protection"
+  },
+  {
+    "id": 7,
+    "name": "SEL-352 Breaker Failure Relay 01",
+    "ipAddress": "10.10.7.17",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Breaker failure protection"
+  },
+  {
+    "id": 8,
+    "name": "SEL-700G Generator Protection Relay 01",
+    "ipAddress": "10.10.8.18",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Generator protection"
+  },
+  {
+    "id": 9,
+    "name": "SEL-3555 RTAC 01",
+    "ipAddress": "10.10.9.19",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "Relay Room",
+    "criticality": "High",
+    "purpose": "Substation automation and data concentration"
+  },
+  {
+    "id": 10,
+    "name": "SEL-2240 Axion 01",
+    "ipAddress": "10.10.10.20",
+    "type": "Controller",
+    "status": "Online",
+    "location": "Distribution Feeder A",
+    "criticality": "High",
+    "purpose": "Modular automation and control"
+  },
+  {
+    "id": 11,
+    "name": "SEL-2411 Programmable Automation Controller 01",
+    "ipAddress": "10.10.11.21",
+    "type": "Controller",
+    "status": "Offline",
+    "location": "Distribution Feeder B",
+    "criticality": "Medium",
+    "purpose": "Automation and I/O control"
+  },
+  {
+    "id": 12,
+    "name": "SEL-2414 Transformer Monitor 01",
+    "ipAddress": "10.10.12.22",
+    "type": "Monitor",
+    "status": "Maintenance",
+    "location": "Switchgear Room",
+    "criticality": "High",
+    "purpose": "Transformer condition monitoring"
+  },
+  {
+    "id": 13,
+    "name": "SEL-735 Power Quality Meter 01",
+    "ipAddress": "10.10.13.23",
+    "type": "Meter",
+    "status": "Online",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Power quality and revenue metering"
+  },
+  {
+    "id": 14,
+    "name": "SEL-734B Advanced Metering System 01",
+    "ipAddress": "10.10.14.24",
+    "type": "Meter",
+    "status": "Offline",
+    "location": "Breaker Bay 2",
+    "criticality": "Medium",
+    "purpose": "Advanced metering and monitoring"
+  },
+  {
+    "id": 15,
+    "name": "SEL-2488 Satellite-Synchronized Network Clock 01",
+    "ipAddress": "10.10.15.25",
+    "type": "Time Sync",
+    "status": "Maintenance",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Precise timing for grid devices"
+  },
+  {
+    "id": 16,
+    "name": "SEL-2740S Software-Defined Network Switch 01",
+    "ipAddress": "10.10.16.26",
+    "type": "Network Device",
+    "status": "Online",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Cybersecure Ethernet networking"
+  },
+  {
+    "id": 17,
+    "name": "SEL-3620 Ethernet Security Gateway 01",
+    "ipAddress": "10.10.17.27",
+    "type": "Security Device",
+    "status": "Offline",
+    "location": "East Substation",
+    "criticality": "High",
+    "purpose": "Cybersecurity perimeter protection"
+  },
+  {
+    "id": 18,
+    "name": "SEL-3061 Cellular Router 01",
+    "ipAddress": "10.10.18.28",
+    "type": "Network Device",
+    "status": "Maintenance",
+    "location": "West Substation",
+    "criticality": "Medium",
+    "purpose": "Secure field communications"
+  },
+  {
+    "id": 19,
+    "name": "Substation Perimeter Camera 01",
+    "ipAddress": "10.10.19.29",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Transmission Bay 1",
+    "criticality": "Medium",
+    "purpose": "Physical security monitoring"
+  },
+  {
+    "id": 20,
+    "name": "Access Control Reader 01",
+    "ipAddress": "10.10.20.30",
+    "type": "Access Device",
+    "status": "Offline",
+    "location": "Transmission Bay 2",
+    "criticality": "Medium",
+    "purpose": "Restricted area access control"
+  },
+  {
+    "id": 21,
+    "name": "SEL-351 Feeder Protection Relay 02",
+    "ipAddress": "10.10.21.31",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Feeder protection and control"
+  },
+  {
+    "id": 22,
+    "name": "SEL-751 Feeder Protection Relay 02",
+    "ipAddress": "10.10.22.32",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Feeder protection, metering, and automation"
+  },
+  {
+    "id": 23,
+    "name": "SEL-421 Transmission Line Relay 02",
+    "ipAddress": "10.10.23.33",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Relay Room",
+    "criticality": "High",
+    "purpose": "Transmission line protection"
+  },
+  {
+    "id": 24,
+    "name": "SEL-T400L Time-Domain Line Protection 02",
+    "ipAddress": "10.10.24.34",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Distribution Feeder A",
+    "criticality": "High",
+    "purpose": "Ultra-high-speed line protection"
+  },
+  {
+    "id": 25,
+    "name": "SEL-487B Bus Differential Relay 02",
+    "ipAddress": "10.10.25.35",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Distribution Feeder B",
+    "criticality": "High",
+    "purpose": "Busbar differential protection"
+  },
+  {
+    "id": 26,
+    "name": "SEL-387 Transformer Protection Relay 02",
+    "ipAddress": "10.11.1.36",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Switchgear Room",
+    "criticality": "High",
+    "purpose": "Transformer differential protection"
+  },
+  {
+    "id": 27,
+    "name": "SEL-352 Breaker Failure Relay 02",
+    "ipAddress": "10.11.2.37",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Breaker failure protection"
+  },
+  {
+    "id": 28,
+    "name": "SEL-700G Generator Protection Relay 02",
+    "ipAddress": "10.11.3.38",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Breaker Bay 2",
+    "criticality": "High",
+    "purpose": "Generator protection"
+  },
+  {
+    "id": 29,
+    "name": "SEL-3555 RTAC 02",
+    "ipAddress": "10.11.4.39",
+    "type": "Controller",
+    "status": "Offline",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Substation automation and data concentration"
+  },
+  {
+    "id": 30,
+    "name": "SEL-2240 Axion 02",
+    "ipAddress": "10.11.5.40",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Modular automation and control"
+  },
+  {
+    "id": 31,
+    "name": "SEL-2411 Programmable Automation Controller 02",
+    "ipAddress": "10.11.6.41",
+    "type": "Controller",
+    "status": "Online",
+    "location": "East Substation",
+    "criticality": "Medium",
+    "purpose": "Automation and I/O control"
+  },
+  {
+    "id": 32,
+    "name": "SEL-2414 Transformer Monitor 02",
+    "ipAddress": "10.11.7.42",
+    "type": "Monitor",
+    "status": "Offline",
+    "location": "West Substation",
+    "criticality": "High",
+    "purpose": "Transformer condition monitoring"
+  },
+  {
+    "id": 33,
+    "name": "SEL-735 Power Quality Meter 02",
+    "ipAddress": "10.11.8.43",
+    "type": "Meter",
+    "status": "Maintenance",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Power quality and revenue metering"
+  },
+  {
+    "id": 34,
+    "name": "SEL-734B Advanced Metering System 02",
+    "ipAddress": "10.11.9.44",
+    "type": "Meter",
+    "status": "Online",
+    "location": "Transmission Bay 2",
+    "criticality": "Medium",
+    "purpose": "Advanced metering and monitoring"
+  },
+  {
+    "id": 35,
+    "name": "SEL-2488 Satellite-Synchronized Network Clock 02",
+    "ipAddress": "10.11.10.45",
+    "type": "Time Sync",
+    "status": "Offline",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Precise timing for grid devices"
+  },
+  {
+    "id": 36,
+    "name": "SEL-2740S Software-Defined Network Switch 02",
+    "ipAddress": "10.11.11.46",
+    "type": "Network Device",
+    "status": "Maintenance",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Cybersecure Ethernet networking"
+  },
+  {
+    "id": 37,
+    "name": "SEL-3620 Ethernet Security Gateway 02",
+    "ipAddress": "10.11.12.47",
+    "type": "Security Device",
+    "status": "Online",
+    "location": "Relay Room",
+    "criticality": "High",
+    "purpose": "Cybersecurity perimeter protection"
+  },
+  {
+    "id": 38,
+    "name": "SEL-3061 Cellular Router 02",
+    "ipAddress": "10.11.13.48",
+    "type": "Network Device",
+    "status": "Offline",
+    "location": "Distribution Feeder A",
+    "criticality": "Medium",
+    "purpose": "Secure field communications"
+  },
+  {
+    "id": 39,
+    "name": "Substation Perimeter Camera 02",
+    "ipAddress": "10.11.14.49",
+    "type": "Camera",
+    "status": "Maintenance",
+    "location": "Distribution Feeder B",
+    "criticality": "Medium",
+    "purpose": "Physical security monitoring"
+  },
+  {
+    "id": 40,
+    "name": "Access Control Reader 02",
+    "ipAddress": "10.11.15.50",
+    "type": "Access Device",
+    "status": "Online",
+    "location": "Switchgear Room",
+    "criticality": "Medium",
+    "purpose": "Restricted area access control"
+  },
+  {
+    "id": 41,
+    "name": "SEL-351 Feeder Protection Relay 03",
+    "ipAddress": "10.11.16.51",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Feeder protection and control"
+  },
+  {
+    "id": 42,
+    "name": "SEL-751 Feeder Protection Relay 03",
+    "ipAddress": "10.11.17.52",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Breaker Bay 2",
+    "criticality": "High",
+    "purpose": "Feeder protection, metering, and automation"
+  },
+  {
+    "id": 43,
+    "name": "SEL-421 Transmission Line Relay 03",
+    "ipAddress": "10.11.18.53",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Transmission line protection"
+  },
+  {
+    "id": 44,
+    "name": "SEL-T400L Time-Domain Line Protection 03",
+    "ipAddress": "10.11.19.54",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Ultra-high-speed line protection"
+  },
+  {
+    "id": 45,
+    "name": "SEL-487B Bus Differential Relay 03",
+    "ipAddress": "10.11.20.55",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "East Substation",
+    "criticality": "High",
+    "purpose": "Busbar differential protection"
+  },
+  {
+    "id": 46,
+    "name": "SEL-387 Transformer Protection Relay 03",
+    "ipAddress": "10.11.21.56",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "West Substation",
+    "criticality": "High",
+    "purpose": "Transformer differential protection"
+  },
+  {
+    "id": 47,
+    "name": "SEL-352 Breaker Failure Relay 03",
+    "ipAddress": "10.11.22.57",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Breaker failure protection"
+  },
+  {
+    "id": 48,
+    "name": "SEL-700G Generator Protection Relay 03",
+    "ipAddress": "10.11.23.58",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Transmission Bay 2",
+    "criticality": "High",
+    "purpose": "Generator protection"
+  },
+  {
+    "id": 49,
+    "name": "SEL-3555 RTAC 03",
+    "ipAddress": "10.11.24.59",
+    "type": "Controller",
+    "status": "Online",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Substation automation and data concentration"
+  },
+  {
+    "id": 50,
+    "name": "SEL-2240 Axion 03",
+    "ipAddress": "10.11.25.60",
+    "type": "Controller",
+    "status": "Offline",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Modular automation and control"
+  },
+  {
+    "id": 51,
+    "name": "SEL-2411 Programmable Automation Controller 03",
+    "ipAddress": "10.12.1.61",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "Relay Room",
+    "criticality": "Medium",
+    "purpose": "Automation and I/O control"
+  },
+  {
+    "id": 52,
+    "name": "SEL-2414 Transformer Monitor 03",
+    "ipAddress": "10.12.2.62",
+    "type": "Monitor",
+    "status": "Online",
+    "location": "Distribution Feeder A",
+    "criticality": "High",
+    "purpose": "Transformer condition monitoring"
+  },
+  {
+    "id": 53,
+    "name": "SEL-735 Power Quality Meter 03",
+    "ipAddress": "10.12.3.63",
+    "type": "Meter",
+    "status": "Offline",
+    "location": "Distribution Feeder B",
+    "criticality": "High",
+    "purpose": "Power quality and revenue metering"
+  },
+  {
+    "id": 54,
+    "name": "SEL-734B Advanced Metering System 03",
+    "ipAddress": "10.12.4.64",
+    "type": "Meter",
+    "status": "Maintenance",
+    "location": "Switchgear Room",
+    "criticality": "Medium",
+    "purpose": "Advanced metering and monitoring"
+  },
+  {
+    "id": 55,
+    "name": "SEL-2488 Satellite-Synchronized Network Clock 03",
+    "ipAddress": "10.12.5.65",
+    "type": "Time Sync",
+    "status": "Online",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Precise timing for grid devices"
+  },
+  {
+    "id": 56,
+    "name": "SEL-2740S Software-Defined Network Switch 03",
+    "ipAddress": "10.12.6.66",
+    "type": "Network Device",
+    "status": "Offline",
+    "location": "Breaker Bay 2",
+    "criticality": "High",
+    "purpose": "Cybersecure Ethernet networking"
+  },
+  {
+    "id": 57,
+    "name": "SEL-3620 Ethernet Security Gateway 03",
+    "ipAddress": "10.12.7.67",
+    "type": "Security Device",
+    "status": "Maintenance",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Cybersecurity perimeter protection"
+  },
+  {
+    "id": 58,
+    "name": "SEL-3061 Cellular Router 03",
+    "ipAddress": "10.12.8.68",
+    "type": "Network Device",
+    "status": "Online",
+    "location": "South Substation",
+    "criticality": "Medium",
+    "purpose": "Secure field communications"
+  },
+  {
+    "id": 59,
+    "name": "Substation Perimeter Camera 03",
+    "ipAddress": "10.12.9.69",
+    "type": "Camera",
+    "status": "Offline",
+    "location": "East Substation",
+    "criticality": "Medium",
+    "purpose": "Physical security monitoring"
+  },
+  {
+    "id": 60,
+    "name": "Access Control Reader 03",
+    "ipAddress": "10.12.10.70",
+    "type": "Access Device",
+    "status": "Maintenance",
+    "location": "West Substation",
+    "criticality": "Medium",
+    "purpose": "Restricted area access control"
+  },
+  {
+    "id": 61,
+    "name": "SEL-351 Feeder Protection Relay 04",
+    "ipAddress": "10.12.11.71",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Feeder protection and control"
+  },
+  {
+    "id": 62,
+    "name": "SEL-751 Feeder Protection Relay 04",
+    "ipAddress": "10.12.12.72",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Transmission Bay 2",
+    "criticality": "High",
+    "purpose": "Feeder protection, metering, and automation"
+  },
+  {
+    "id": 63,
+    "name": "SEL-421 Transmission Line Relay 04",
+    "ipAddress": "10.12.13.73",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Transmission line protection"
+  },
+  {
+    "id": 64,
+    "name": "SEL-T400L Time-Domain Line Protection 04",
+    "ipAddress": "10.12.14.74",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Ultra-high-speed line protection"
+  },
+  {
+    "id": 65,
+    "name": "SEL-487B Bus Differential Relay 04",
+    "ipAddress": "10.12.15.75",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Relay Room",
+    "criticality": "High",
+    "purpose": "Busbar differential protection"
+  },
+  {
+    "id": 66,
+    "name": "SEL-387 Transformer Protection Relay 04",
+    "ipAddress": "10.12.16.76",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Distribution Feeder A",
+    "criticality": "High",
+    "purpose": "Transformer differential protection"
+  },
+  {
+    "id": 67,
+    "name": "SEL-352 Breaker Failure Relay 04",
+    "ipAddress": "10.12.17.77",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Distribution Feeder B",
+    "criticality": "High",
+    "purpose": "Breaker failure protection"
+  },
+  {
+    "id": 68,
+    "name": "SEL-700G Generator Protection Relay 04",
+    "ipAddress": "10.12.18.78",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Switchgear Room",
+    "criticality": "High",
+    "purpose": "Generator protection"
+  },
+  {
+    "id": 69,
+    "name": "SEL-3555 RTAC 04",
+    "ipAddress": "10.12.19.79",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Substation automation and data concentration"
+  },
+  {
+    "id": 70,
+    "name": "SEL-2240 Axion 04",
+    "ipAddress": "10.12.20.80",
+    "type": "Controller",
+    "status": "Online",
+    "location": "Breaker Bay 2",
+    "criticality": "High",
+    "purpose": "Modular automation and control"
+  },
+  {
+    "id": 71,
+    "name": "SEL-2411 Programmable Automation Controller 04",
+    "ipAddress": "10.12.21.81",
+    "type": "Controller",
+    "status": "Offline",
+    "location": "North Substation",
+    "criticality": "Medium",
+    "purpose": "Automation and I/O control"
+  },
+  {
+    "id": 72,
+    "name": "SEL-2414 Transformer Monitor 04",
+    "ipAddress": "10.12.22.82",
+    "type": "Monitor",
+    "status": "Maintenance",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Transformer condition monitoring"
+  },
+  {
+    "id": 73,
+    "name": "SEL-735 Power Quality Meter 04",
+    "ipAddress": "10.12.23.83",
+    "type": "Meter",
+    "status": "Online",
+    "location": "East Substation",
+    "criticality": "High",
+    "purpose": "Power quality and revenue metering"
+  },
+  {
+    "id": 74,
+    "name": "SEL-734B Advanced Metering System 04",
+    "ipAddress": "10.12.24.84",
+    "type": "Meter",
+    "status": "Offline",
+    "location": "West Substation",
+    "criticality": "Medium",
+    "purpose": "Advanced metering and monitoring"
+  },
+  {
+    "id": 75,
+    "name": "SEL-2488 Satellite-Synchronized Network Clock 04",
+    "ipAddress": "10.12.25.85",
+    "type": "Time Sync",
+    "status": "Maintenance",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Precise timing for grid devices"
+  },
+  {
+    "id": 76,
+    "name": "SEL-2740S Software-Defined Network Switch 04",
+    "ipAddress": "10.13.1.86",
+    "type": "Network Device",
+    "status": "Online",
+    "location": "Transmission Bay 2",
+    "criticality": "High",
+    "purpose": "Cybersecure Ethernet networking"
+  },
+  {
+    "id": 77,
+    "name": "SEL-3620 Ethernet Security Gateway 04",
+    "ipAddress": "10.13.2.87",
+    "type": "Security Device",
+    "status": "Offline",
+    "location": "Transformer Yard",
+    "criticality": "High",
+    "purpose": "Cybersecurity perimeter protection"
+  },
+  {
+    "id": 78,
+    "name": "SEL-3061 Cellular Router 04",
+    "ipAddress": "10.13.3.88",
+    "type": "Network Device",
+    "status": "Maintenance",
+    "location": "Control Center",
+    "criticality": "Medium",
+    "purpose": "Secure field communications"
+  },
+  {
+    "id": 79,
+    "name": "Substation Perimeter Camera 04",
+    "ipAddress": "10.13.4.89",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Relay Room",
+    "criticality": "Medium",
+    "purpose": "Physical security monitoring"
+  },
+  {
+    "id": 80,
+    "name": "Access Control Reader 04",
+    "ipAddress": "10.13.5.90",
+    "type": "Access Device",
+    "status": "Offline",
+    "location": "Distribution Feeder A",
+    "criticality": "Medium",
+    "purpose": "Restricted area access control"
+  },
+  {
+    "id": 81,
+    "name": "SEL-351 Feeder Protection Relay 05",
+    "ipAddress": "10.13.6.91",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Distribution Feeder B",
+    "criticality": "High",
+    "purpose": "Feeder protection and control"
+  },
+  {
+    "id": 82,
+    "name": "SEL-751 Feeder Protection Relay 05",
+    "ipAddress": "10.13.7.92",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Switchgear Room",
+    "criticality": "High",
+    "purpose": "Feeder protection, metering, and automation"
+  },
+  {
+    "id": 83,
+    "name": "SEL-421 Transmission Line Relay 05",
+    "ipAddress": "10.13.8.93",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Transmission line protection"
+  },
+  {
+    "id": 84,
+    "name": "SEL-T400L Time-Domain Line Protection 05",
+    "ipAddress": "10.13.9.94",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "Breaker Bay 2",
+    "criticality": "High",
+    "purpose": "Ultra-high-speed line protection"
+  },
+  {
+    "id": 85,
+    "name": "SEL-487B Bus Differential Relay 05",
+    "ipAddress": "10.13.10.95",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "North Substation",
+    "criticality": "High",
+    "purpose": "Busbar differential protection"
+  },
+  {
+    "id": 86,
+    "name": "SEL-387 Transformer Protection Relay 05",
+    "ipAddress": "10.13.11.96",
+    "type": "Protection Relay",
+    "status": "Offline",
+    "location": "South Substation",
+    "criticality": "High",
+    "purpose": "Transformer differential protection"
+  },
+  {
+    "id": 87,
+    "name": "SEL-352 Breaker Failure Relay 05",
+    "ipAddress": "10.13.12.97",
+    "type": "Protection Relay",
+    "status": "Maintenance",
+    "location": "East Substation",
+    "criticality": "High",
+    "purpose": "Breaker failure protection"
+  },
+  {
+    "id": 88,
+    "name": "SEL-700G Generator Protection Relay 05",
+    "ipAddress": "10.13.13.98",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "West Substation",
+    "criticality": "High",
+    "purpose": "Generator protection"
+  },
+  {
+    "id": 89,
+    "name": "SEL-3555 RTAC 05",
+    "ipAddress": "10.13.14.99",
+    "type": "Controller",
+    "status": "Offline",
+    "location": "Transmission Bay 1",
+    "criticality": "High",
+    "purpose": "Substation automation and data concentration"
+  },
+  {
+    "id": 90,
+    "name": "SEL-2240 Axion 05",
+    "ipAddress": "10.13.15.100",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "Transmission Bay 2",
+    "criticality": "High",
+    "purpose": "Modular automation and control"
+  },
+  {
+    "id": 91,
+    "name": "SEL-2411 Programmable Automation Controller 05",
+    "ipAddress": "10.13.16.101",
+    "type": "Controller",
+    "status": "Online",
+    "location": "Transformer Yard",
+    "criticality": "Medium",
+    "purpose": "Automation and I/O control"
+  },
+  {
+    "id": 92,
+    "name": "SEL-2414 Transformer Monitor 05",
+    "ipAddress": "10.13.17.102",
+    "type": "Monitor",
+    "status": "Offline",
+    "location": "Control Center",
+    "criticality": "High",
+    "purpose": "Transformer condition monitoring"
+  },
+  {
+    "id": 93,
+    "name": "SEL-735 Power Quality Meter 05",
+    "ipAddress": "10.13.18.103",
+    "type": "Meter",
+    "status": "Maintenance",
+    "location": "Relay Room",
+    "criticality": "High",
+    "purpose": "Power quality and revenue metering"
+  },
+  {
+    "id": 94,
+    "name": "SEL-734B Advanced Metering System 05",
+    "ipAddress": "10.13.19.104",
+    "type": "Meter",
+    "status": "Online",
+    "location": "Distribution Feeder A",
+    "criticality": "Medium",
+    "purpose": "Advanced metering and monitoring"
+  },
+  {
+    "id": 95,
+    "name": "SEL-2488 Satellite-Synchronized Network Clock 05",
+    "ipAddress": "10.13.20.105",
+    "type": "Time Sync",
+    "status": "Offline",
+    "location": "Distribution Feeder B",
+    "criticality": "High",
+    "purpose": "Precise timing for grid devices"
+  },
+  {
+    "id": 96,
+    "name": "SEL-2740S Software-Defined Network Switch 05",
+    "ipAddress": "10.13.21.106",
+    "type": "Network Device",
+    "status": "Maintenance",
+    "location": "Switchgear Room",
+    "criticality": "High",
+    "purpose": "Cybersecure Ethernet networking"
+  },
+  {
+    "id": 97,
+    "name": "SEL-3620 Ethernet Security Gateway 05",
+    "ipAddress": "10.13.22.107",
+    "type": "Security Device",
+    "status": "Online",
+    "location": "Breaker Bay 1",
+    "criticality": "High",
+    "purpose": "Cybersecurity perimeter protection"
+  },
+  {
+    "id": 98,
+    "name": "SEL-3061 Cellular Router 05",
+    "ipAddress": "10.13.23.108",
+    "type": "Network Device",
+    "status": "Offline",
+    "location": "Breaker Bay 2",
+    "criticality": "Medium",
+    "purpose": "Secure field communications"
+  },
+  {
+    "id": 99,
+    "name": "Substation Perimeter Camera 05",
+    "ipAddress": "10.13.24.109",
+    "type": "Camera",
+    "status": "Maintenance",
+    "location": "North Substation",
+    "criticality": "Medium",
+    "purpose": "Physical security monitoring"
+  },
+  {
+    "id": 100,
+    "name": "Access Control Reader 05",
+    "ipAddress": "10.13.25.110",
+    "type": "Access Device",
+    "status": "Online",
+    "location": "South Substation",
+    "criticality": "Medium",
+    "purpose": "Restricted area access control"
+  },
+  {
+    "id": 103,
+    "name": "swa3333",
+    "ipAddress": "10.0.0.5",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "jsda",
+    "criticality": "Medium",
+    "purpose": "Grid device monitoring"
+  },
+  {
+    "id": 104,
+    "name": "swa4",
+    "ipAddress": "10.0.0.5",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Unassigned",
+    "criticality": "Medium",
+    "purpose": "Grid device monitoring"
+  },
+  {
+    "id": 105,
+    "name": "swa44",
+    "ipAddress": "10.0.0.5",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "Unassigned",
+    "criticality": "Medium",
+    "purpose": "Grid device monitoring"
+  },
+  {
+    "id": 106,
+    "name": "swa5",
+    "ipAddress": "192.168.1.1",
+    "type": "Protection Relay",
+    "status": "Online",
+    "location": "test255",
+    "criticality": "Medium",
+    "purpose": "Grid device monitoring"
+  },
+  {
+    "id": 101,
+    "name": "Lobby Security Camera 01",
+    "ipAddress": "10.20.1.101",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Main Lobby",
+    "criticality": "High",
+    "purpose": "Entrance monitoring"
+  },
+  {
+    "id": 102,
+    "name": "Parking Lot Camera 01",
+    "ipAddress": "10.20.1.102",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Parking Area",
+    "criticality": "Medium",
+    "purpose": "Vehicle surveillance"
+  },
+  {
+    "id": 103,
+    "name": "Warehouse Camera 01",
+    "ipAddress": "10.20.1.103",
+    "type": "Camera",
+    "status": "Offline",
+    "location": "Warehouse",
+    "criticality": "Medium",
+    "purpose": "Inventory monitoring"
+  },
+  {
+    "id": 104,
+    "name": "Server Room Camera 01",
+    "ipAddress": "10.20.1.104",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Server Room",
+    "criticality": "High",
+    "purpose": "Data center security"
+  },
+  {
+    "id": 105,
+    "name": "Loading Dock Camera 01",
+    "ipAddress": "10.20.1.105",
+    "type": "Camera",
+    "status": "Maintenance",
+    "location": "Loading Dock",
+    "criticality": "Medium",
+    "purpose": "Shipment monitoring"
+  },
+  {
+    "id": 106,
+    "name": "Smart Doorbell Front Entrance",
+    "ipAddress": "10.20.2.101",
+    "type": "Doorbell",
+    "status": "Online",
+    "location": "Front Entrance",
+    "criticality": "Medium",
+    "purpose": "Visitor notification"
+  },
+  {
+    "id": 107,
+    "name": "Smart Doorbell Rear Entrance",
+    "ipAddress": "10.20.2.102",
+    "type": "Doorbell",
+    "status": "Online",
+    "location": "Rear Entrance",
+    "criticality": "Medium",
+    "purpose": "Visitor notification"
+  },
+  {
+    "id": 108,
+    "name": "Smart Doorbell Warehouse Entry",
+    "ipAddress": "10.20.2.103",
+    "type": "Doorbell",
+    "status": "Offline",
+    "location": "Warehouse Entry",
+    "criticality": "Low",
+    "purpose": "Delivery alerts"
+  },
+  {
+    "id": 109,
+    "name": "Smart Doorbell Executive Office",
+    "ipAddress": "10.20.2.104",
+    "type": "Doorbell",
+    "status": "Maintenance",
+    "location": "Executive Wing",
+    "criticality": "Low",
+    "purpose": "Guest notification"
+  },
+  {
+    "id": 110,
+    "name": "Smart Doorbell Data Center",
+    "ipAddress": "10.20.2.105",
+    "type": "Doorbell",
+    "status": "Online",
+    "location": "Data Center",
+    "criticality": "High",
+    "purpose": "Secure visitor management"
+  },
+  {
+    "id": 111,
+    "name": "Conference Room Light 01",
+    "ipAddress": "10.20.3.101",
+    "type": "Light Bulb",
+    "status": "Online",
+    "location": "Conference Room A",
+    "criticality": "Low",
+    "purpose": "Smart lighting"
+  },
+  {
+    "id": 112,
+    "name": "Conference Room Light 02",
+    "ipAddress": "10.20.3.102",
+    "type": "Light Bulb",
+    "status": "Online",
+    "location": "Conference Room B",
+    "criticality": "Low",
+    "purpose": "Smart lighting"
+  },
+  {
+    "id": 113,
+    "name": "Lobby Light Controller",
+    "ipAddress": "10.20.3.103",
+    "type": "Light Bulb",
+    "status": "Maintenance",
+    "location": "Lobby",
+    "criticality": "Low",
+    "purpose": "Energy-efficient lighting"
+  },
+  {
+    "id": 114,
+    "name": "Parking Light Controller",
+    "ipAddress": "10.20.3.104",
+    "type": "Light Bulb",
+    "status": "Online",
+    "location": "Parking Area",
+    "criticality": "Medium",
+    "purpose": "Outdoor lighting"
+  },
+  {
+    "id": 115,
+    "name": "Hallway Light Controller",
+    "ipAddress": "10.20.3.105",
+    "type": "Light Bulb",
+    "status": "Offline",
+    "location": "Main Hallway",
+    "criticality": "Low",
+    "purpose": "Automated lighting"
+  },
+  {
+    "id": 116,
+    "name": "Executive Office Shade 01",
+    "ipAddress": "10.20.4.101",
+    "type": "Window Shade",
+    "status": "Online",
+    "location": "Executive Office",
+    "criticality": "Low",
+    "purpose": "Automated daylight control"
+  },
+  {
+    "id": 117,
+    "name": "Executive Office Shade 02",
+    "ipAddress": "10.20.4.102",
+    "type": "Window Shade",
+    "status": "Online",
+    "location": "Executive Office",
+    "criticality": "Low",
+    "purpose": "Automated daylight control"
+  },
+  {
+    "id": 118,
+    "name": "Conference Room Shade 01",
+    "ipAddress": "10.20.4.103",
+    "type": "Window Shade",
+    "status": "Maintenance",
+    "location": "Conference Room A",
+    "criticality": "Low",
+    "purpose": "Glare reduction"
+  },
+  {
+    "id": 119,
+    "name": "Conference Room Shade 02",
+    "ipAddress": "10.20.4.104",
+    "type": "Window Shade",
+    "status": "Online",
+    "location": "Conference Room B",
+    "criticality": "Low",
+    "purpose": "Glare reduction"
+  },
+  {
+    "id": 120,
+    "name": "Lobby Shade Controller",
+    "ipAddress": "10.20.4.105",
+    "type": "Window Shade",
+    "status": "Offline",
+    "location": "Lobby",
+    "criticality": "Low",
+    "purpose": "Sunlight management"
+  },
+  {
+    "id": 121,
+    "name": "Reception Camera 01",
+    "ipAddress": "10.20.1.106",
+    "type": "Camera",
+    "status": "Online",
+    "location": "Reception",
+    "criticality": "Medium",
+    "purpose": "Visitor monitoring"
+  },
+  {
+    "id": 122,
+    "name": "Warehouse Camera 02",
+    "ipAddress": "10.20.1.107",
+    "type": "Camera",
+    "status": "Maintenance",
+    "location": "Warehouse",
+    "criticality": "Medium",
+    "purpose": "Asset protection"
+  },
+  {
+    "id": 123,
+    "name": "Smart Doorbell Security Gate",
+    "ipAddress": "10.20.2.106",
+    "type": "Doorbell",
+    "status": "Online",
+    "location": "Security Gate",
+    "criticality": "Medium",
+    "purpose": "Visitor access notification"
+  },
+  {
+    "id": 124,
+    "name": "Corridor Light Controller",
+    "ipAddress": "10.20.3.106",
+    "type": "Light Bulb",
+    "status": "Online",
+    "location": "East Corridor",
+    "criticality": "Low",
+    "purpose": "Smart corridor lighting"
+  },
+  {
+    "id": 125,
+    "name": "Operations Center Shade",
+    "ipAddress": "10.20.4.106",
+    "type": "Window Shade",
+    "status": "Online",
+    "location": "Operations Center",
+    "criticality": "Low",
+    "purpose": "Light and heat control"
+  }
+]

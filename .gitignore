@@ -1,0 +1,7 @@
+node_modules/
+server/node_modules/
+sel_dashboard/node_modules/
+dist/
+build/
+coverage/
+.env
