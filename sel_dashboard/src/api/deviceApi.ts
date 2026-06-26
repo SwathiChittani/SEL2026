@@ -1,24 +1,40 @@
+import { apiFetch, apiFetchBlob } from "./apiClient";
 import { API_ENDPOINTS } from "../constants/apiEndpoints";
+import type { Device } from "../types/device";
 
-export async function getDevices() {
+export function getDevices() {
+  return apiFetch<Device[]>(API_ENDPOINTS.DEVICES);
+}
 
-  const token =
-    localStorage.getItem("token");
+export function addDevice(device: Device) {
+  return apiFetch<Device>(API_ENDPOINTS.DEVICES, {
+    method: "POST",
+    body: JSON.stringify(device),
+  });
+}
 
-  const response = await fetch(
-    API_ENDPOINTS.DEVICES,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+export function updateDevice(device: Device) {
+  return apiFetch<Device>(`${API_ENDPOINTS.DEVICES}/${device.id}`, {
+    method: "PUT",
+    body: JSON.stringify(device),
+  });
+}
 
-  if (!response.ok) {
-    throw new Error(
-      "Failed to load devices"
-    );
-  }
+export function deleteDevice(id: number) {
+  return apiFetch<void>(`${API_ENDPOINTS.DEVICES}/${id}`, {
+    method: "DELETE",
+  });
+}
 
-  return response.json();
+export function importDevices(devices: Device[]) {
+  return apiFetch<Device[]>(API_ENDPOINTS.IMPORT_DEVICES, {
+    method: "POST",
+    body: JSON.stringify(devices),
+  });
+}
+
+export function exportDevices() {
+  return apiFetchBlob(API_ENDPOINTS.EXPORT_DEVICES, {
+    method: "GET",
+  });
 }

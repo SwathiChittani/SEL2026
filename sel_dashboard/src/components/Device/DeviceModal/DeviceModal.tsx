@@ -76,19 +76,6 @@ function DeviceModal({
     const nameValue = formDevice.name.trim();
     const ipValue = formDevice.ipAddress.trim();
 
-    const duplicateDevice = devices.find((item) => {
-      const sameName =
-        item.name.trim().toLowerCase() === nameValue.toLowerCase();
-
-      const isSameDevice = mode === "edit" && item.id === formDevice.id;
-      return !isSameDevice && (sameName);
-    });
-
-    if (duplicateDevice) {
-      setFormError("A device with the same name.");
-      return false;
-    }
-
     if (!isRequired(nameValue)) {
       setFormError("Device name is required.");
       return false;
@@ -99,9 +86,23 @@ function DeviceModal({
       return false;
     }
 
+    const duplicateDevice = devices.find((item) => {
+      const sameName =
+        item.name.trim().toLowerCase() === nameValue.toLowerCase();
+
+      const isSameDevice = mode === "edit" && item.id === formDevice.id;
+
+      return sameName && !isSameDevice;
+    });
+
+    if (duplicateDevice) {
+      setFormError("A device with the same name already exists.");
+      return false;
+    }
+
     return true;
   }
-
+  
   function handleSubmit() {
     if (!validateForm()) {
       return;

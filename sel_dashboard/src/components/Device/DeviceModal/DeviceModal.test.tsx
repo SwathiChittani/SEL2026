@@ -110,7 +110,7 @@ test("shows duplicate name error in add mode", async () => {
 
   await user.click(getByRole("button", { name: /save device/i }));
 
-  expect(getByText("A device with the same name.")).toBeInTheDocument();
+  expect(getByText("A device with the same name already exists.")).toBeInTheDocument();
 });
 
 test("shows invalid IP error in add mode", async () => {

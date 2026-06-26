@@ -3,19 +3,39 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import DeviceDashboard from "./DeviceDashboard";
 import { mockDevice } from "../../../test/mocks/deviceMock";
-import { getDevices } from "../../../api/deviceApi";
+import {
+  getDevices,
+  addDevice,
+  updateDevice,
+  deleteDevice,
+  importDevices,
+  exportDevices,
+} from "../../../api/deviceApi";
+import type { Device, DeviceStatus } from "../../../types/device";
 
 vi.mock("../../../api/deviceApi", () => ({
   getDevices: vi.fn(),
+  addDevice: vi.fn(),
+  updateDevice: vi.fn(),
+  deleteDevice: vi.fn(),
+  importDevices: vi.fn(),
+  exportDevices: vi.fn(),
 }));
 
-const secondDevice = {
+const mockGetDevices = vi.mocked(getDevices);
+const mockAddDevice = vi.mocked(addDevice);
+const mockUpdateDevice = vi.mocked(updateDevice);
+const mockDeleteDevice = vi.mocked(deleteDevice);
+const mockImportDevices = vi.mocked(importDevices);
+const mockExportDevices = vi.mocked(exportDevices);
+
+const secondDevice: Device = {
   ...mockDevice,
   id: 2,
   name: "Doorbell 01",
   ipAddress: "192.168.1.20",
   type: "Doorbell",
-  status: "Offline",
+  status: "Offline" as DeviceStatus,
   location: "Building B",
   purpose: "Visitor monitoring",
 };
@@ -29,36 +49,11 @@ vi.mock("../DeviceHeader/DeviceHeader", () => ({
   ),
 }));
 
-// vi.mock("../DeviceToolbar/DeviceToolbar", () => ({
-//   default: ({ onImport, onExport, onClearFilters }: any) => (
-//     <div>
-//       <button onClick={onClearFilters}>Clear Filters</button>
-//       <button onClick={onExport}>Export</button>
-//       <button
-//         onClick={() =>
-//           onImport(
-//             new File(
-//               [JSON.stringify([{ id: 3, name: "Imported Device" }])],
-//               "importdevices.json",
-//               { type: "application/json" }
-//             )
-//           )
-//         }
-//       >
-//         Import Valid
-//       </button>
-//     </div>
-//   ),
-// }));
-
 vi.mock("../DeviceToolbar/DeviceToolbar", () => ({
   default: ({ onImport, onExport, onClearFilters }: any) => (
     <div>
       <button onClick={onClearFilters}>Clear Filters</button>
-
-      <button onClick={onExport}>
-        Export
-      </button>
+      <button onClick={onExport}>Export</button>
 
       <button
         onClick={() =>
@@ -77,11 +72,9 @@ vi.mock("../DeviceToolbar/DeviceToolbar", () => ({
       <button
         onClick={() =>
           onImport(
-            new File(
-              [JSON.stringify({ invalid: true })],
-              "bad.json",
-              { type: "application/json" }
-            )
+            new File([JSON.stringify({ invalid: true })], "bad.json", {
+              type: "application/json",
+            })
           )
         }
       >
@@ -91,11 +84,9 @@ vi.mock("../DeviceToolbar/DeviceToolbar", () => ({
       <button
         onClick={() =>
           onImport(
-            new File(
-              ["bad json"],
-              "bad.json",
-              { type: "application/json" }
-            )
+            new File(["bad json"], "bad.json", {
+              type: "application/json",
+            })
           )
         }
       >
@@ -168,6 +159,7 @@ vi.mock("../DeviceTable/DeviceTable", () => ({
             </button>
           </div>
         ))}
+
         <button onClick={() => onRemoveDevice(999999)}>
           Delete Unknown
         </button>
@@ -247,19 +239,13 @@ vi.mock("../DeviceDelete/DeleteConfirmationModal", () => ({
 beforeEach(() => {
   localStorage.setItem("token", "fake-token");
 
-  vi.mocked(getDevices).mockResolvedValue([
-    mockDevice,
-    secondDevice,
-  ]);
-
-  vi.stubGlobal(
-    "fetch",
-    vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ message: "success" }),
-      } as Response)
-    )
+  mockGetDevices.mockResolvedValue([mockDevice, secondDevice]);
+  mockAddDevice.mockResolvedValue(mockDevice);
+  mockUpdateDevice.mockResolvedValue(mockDevice);
+  mockDeleteDevice.mockResolvedValue(undefined);
+  mockImportDevices.mockResolvedValue([mockDevice, secondDevice]);
+  mockExportDevices.mockResolvedValue(
+    new Blob(["[]"], { type: "application/json" })
   );
 
   vi.stubGlobal("alert", vi.fn());
@@ -296,16 +282,14 @@ test("loads and displays devices", async () => {
 });
 
 test("shows error when load devices fails", async () => {
-  vi.mocked(getDevices).mockRejectedValueOnce(new Error("API failed"));
+  mockGetDevices.mockRejectedValueOnce(new Error("API failed"));
 
   render(<DeviceDashboard onLogout={() => {}} />);
 
   await waitFor(
     () => {
       expect(
-        screen.getByText(
-          "Unable to load devices. Authentication or API failed."
-        )
+        screen.getByText("Unable to load devices. Authentication or API failed.")
       ).toBeInTheDocument();
     },
     { timeout: 3000 }
@@ -390,10 +374,10 @@ test("adds device successfully", async () => {
   await user.click(screen.getByRole("button", { name: /mock add save/i }));
 
   await waitFor(() => {
-    expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining("/api/devices"),
+    expect(mockAddDevice).toHaveBeenCalledWith(
       expect.objectContaining({
-        method: "POST",
+        name: "New Camera",
+        ipAddress: "192.168.1.30",
       })
     );
   });
@@ -402,10 +386,7 @@ test("adds device successfully", async () => {
 test("shows add modal error when add fails", async () => {
   const user = userEvent.setup();
 
-  vi.mocked(fetch).mockResolvedValueOnce({
-    ok: false,
-    json: () => Promise.resolve({ message: "Add failed" }),
-  } as Response);
+  mockAddDevice.mockRejectedValueOnce(new Error("Add failed"));
 
   await renderAndLoad();
 
@@ -431,10 +412,9 @@ test("updates device successfully", async () => {
   await user.click(screen.getByRole("button", { name: /mock edit save/i }));
 
   await waitFor(() => {
-    expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining(`/api/devices/${mockDevice.id}`),
+    expect(mockUpdateDevice).toHaveBeenCalledWith(
       expect.objectContaining({
-        method: "PUT",
+        name: "Updated Camera",
       })
     );
   });
@@ -443,10 +423,7 @@ test("updates device successfully", async () => {
 test("shows edit modal error when update fails", async () => {
   const user = userEvent.setup();
 
-  vi.mocked(fetch).mockResolvedValueOnce({
-    ok: false,
-    json: () => Promise.resolve({ message: "Update failed" }),
-  } as Response);
+  mockUpdateDevice.mockRejectedValueOnce(new Error("Update failed"));
 
   await renderAndLoad();
 
@@ -490,9 +467,7 @@ test("cancels delete confirmation modal", async () => {
 
   await user.click(screen.getByRole("button", { name: /^no$/i }));
 
-  expect(
-    screen.queryByText(`Delete ${mockDevice.name}?`)
-  ).not.toBeInTheDocument();
+  expect(screen.queryByText(`Delete ${mockDevice.name}?`)).not.toBeInTheDocument();
 });
 
 test("deletes device successfully", async () => {
@@ -509,22 +484,14 @@ test("deletes device successfully", async () => {
   await user.click(screen.getByRole("button", { name: /yes/i }));
 
   await waitFor(() => {
-    expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining(`/api/devices/${mockDevice.id}`),
-      expect.objectContaining({
-        method: "DELETE",
-      })
-    );
+    expect(mockDeleteDevice).toHaveBeenCalledWith(mockDevice.id);
   });
 });
 
 test("alerts when delete fails", async () => {
   const user = userEvent.setup();
 
-  vi.mocked(fetch).mockResolvedValueOnce({
-    ok: false,
-    json: () => Promise.resolve({ message: "Delete failed" }),
-  } as Response);
+  mockDeleteDevice.mockRejectedValueOnce(new Error("Delete failed"));
 
   await renderAndLoad();
 
@@ -611,11 +578,13 @@ test("imports valid devices", async () => {
   await user.click(screen.getByRole("button", { name: /import valid/i }));
 
   await waitFor(() => {
-    expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining("/api/devices/import"),
-      expect.objectContaining({
-        method: "POST",
-      })
+    expect(mockImportDevices).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: 3,
+          name: "Imported Device",
+        }),
+      ])
     );
   });
 });
@@ -627,8 +596,11 @@ test("exports devices", async () => {
 
   await user.click(screen.getByRole("button", { name: /export/i }));
 
-  expect(URL.createObjectURL).toHaveBeenCalled();
-  expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:test-url");
+  await waitFor(() => {
+    expect(mockExportDevices).toHaveBeenCalled();
+    expect(URL.createObjectURL).toHaveBeenCalled();
+    expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:test-url");
+  });
 });
 
 test("calls logout when Logout is clicked", async () => {
@@ -653,9 +625,7 @@ test("does nothing when delete id does not exist", async () => {
     })
   );
 
-  expect(
-    screen.queryByText(`Delete ${mockDevice.name}?`)
-  ).not.toBeInTheDocument();
+  expect(screen.queryByText(`Delete ${mockDevice.name}?`)).not.toBeInTheDocument();
 });
 
 test("alerts when import file is not an array", async () => {
@@ -670,9 +640,7 @@ test("alerts when import file is not an array", async () => {
   );
 
   await waitFor(() => {
-    expect(alert).toHaveBeenCalledWith(
-      "Invalid file. Expected a JSON array."
-    );
+    expect(alert).toHaveBeenCalledWith("Invalid file. Expected a JSON array.");
   });
 });
 
@@ -691,196 +659,3 @@ test("alerts when import JSON is invalid", async () => {
     expect(alert).toHaveBeenCalled();
   });
 });
-// import { afterEach, expect, test, vi } from "vitest";
-// import { cleanup, render, screen, waitFor } from "@testing-library/react";
-// import userEvent from "@testing-library/user-event";
-// import DeviceDashboard from "./DeviceDashboard";
-// import { mockDevice } from "../../../test/mocks/deviceMock";
-
-// vi.mock("../../../api/deviceApi", () => ({
-//   getDevices: vi.fn(() => Promise.resolve([mockDevice])),
-// }));
-
-// vi.mock("../DeviceHeader/DeviceHeader", () => ({
-//   default: ({ onAddDevice, onLogout }: any) => (
-//     <div>
-//       <button onClick={onAddDevice}>Add Device</button>
-//       <button onClick={onLogout}>Logout</button>
-//     </div>
-//   ),
-// }));
-
-// vi.mock("../DeviceToolbar/DeviceToolbar", () => ({
-//   default: ({ onClearFilters }: any) => (
-//     <button onClick={onClearFilters}>Clear Filters</button>
-//   ),
-// }));
-
-// vi.mock("../DeviceTable/DeviceTable", () => ({
-//   default: ({
-//     devices,
-//     loading,
-//     error,
-//     onSelectDevice,
-//     onEditDevice,
-//     onRemoveDevice,
-//   }: any) => {
-//     if (loading) return <div>Loading devices...</div>;
-//     if (error) return <div>{error}</div>;
-
-//     return (
-//       <div>
-//         {devices.map((device: any) => (
-//           <div key={device.id}>
-//             <span>{device.name}</span>
-
-//             <button onClick={() => onSelectDevice(device)}>
-//               View {device.name}
-//             </button>
-
-//             <button onClick={() => onEditDevice(device)}>
-//               Edit {device.name}
-//             </button>
-
-//             <button onClick={() => onRemoveDevice(device.id)}>
-//               Delete {device.name}
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     );
-//   },
-// }));
-
-// vi.mock("../DeviceFooter/DeviceFooter", () => ({
-//   default: () => <div>Footer</div>,
-// }));
-
-// vi.mock("../DeviceModal/DeviceModal", () => ({
-//   default: ({ mode, device, onClose }: any) => (
-//     <div>
-//       <span>Modal Mode: {mode}</span>
-//       {device && <span>{device.name}</span>}
-//       <button onClick={onClose}>Close Modal</button>
-//     </div>
-//   ),
-// }));
-
-// vi.mock("../DeviceDelete/DeleteConfirmationModal", () => ({
-//   default: ({ deviceName, onCancel, onConfirm }: any) => (
-//     <div>
-//       <span>Delete {deviceName}?</span>
-//       <button onClick={onConfirm}>Yes</button>
-//       <button onClick={onCancel}>No</button>
-//     </div>
-//   ),
-// }));
-
-// afterEach(() => {
-//   cleanup();
-//   vi.clearAllMocks();
-// });
-
-// test("loads and displays devices", async () => {
-//   render(<DeviceDashboard onLogout={() => {}} />);
-
-//   expect(screen.getByText(/loading devices/i)).toBeInTheDocument();
-
-//   await waitFor(
-//     () => {
-//       expect(screen.getByText(mockDevice.name)).toBeInTheDocument();
-//     },
-//     { timeout: 2000 }
-//   );
-// });
-
-// test("opens add modal when Add Device is clicked", async () => {
-//   const user = userEvent.setup();
-
-//   render(<DeviceDashboard onLogout={() => {}} />);
-
-//   await waitFor(
-//     () => {
-//       expect(screen.getByText(mockDevice.name)).toBeInTheDocument();
-//     },
-//     { timeout: 2000 }
-//   );
-
-//   await user.click(screen.getByRole("button", { name: /add device/i }));
-
-//   expect(screen.getByText("Modal Mode: add")).toBeInTheDocument();
-// });
-
-// test("opens view modal when device is selected", async () => {
-//   const user = userEvent.setup();
-
-//   render(<DeviceDashboard onLogout={() => {}} />);
-
-//   await waitFor(
-//     () => {
-//       expect(screen.getByText(mockDevice.name)).toBeInTheDocument();
-//     },
-//     { timeout: 2000 }
-//   );
-
-//   await user.click(
-//     screen.getByRole("button", {
-//       name: new RegExp(`view ${mockDevice.name}`, "i"),
-//     })
-//   );
-
-//   expect(screen.getByText("Modal Mode: view")).toBeInTheDocument();
-// });
-
-// test("opens edit modal when edit is clicked", async () => {
-//   const user = userEvent.setup();
-
-//   render(<DeviceDashboard onLogout={() => {}} />);
-
-//   await waitFor(
-//     () => {
-//       expect(screen.getByText(mockDevice.name)).toBeInTheDocument();
-//     },
-//     { timeout: 2000 }
-//   );
-
-//   await user.click(
-//     screen.getByRole("button", {
-//       name: new RegExp(`edit ${mockDevice.name}`, "i"),
-//     })
-//   );
-
-//   expect(screen.getByText("Modal Mode: edit")).toBeInTheDocument();
-// });
-
-// test("opens delete confirmation modal when delete is clicked", async () => {
-//   const user = userEvent.setup();
-
-//   render(<DeviceDashboard onLogout={() => {}} />);
-
-//   await waitFor(
-//     () => {
-//       expect(screen.getByText(mockDevice.name)).toBeInTheDocument();
-//     },
-//     { timeout: 2000 }
-//   );
-
-//   await user.click(
-//     screen.getByRole("button", {
-//       name: new RegExp(`delete ${mockDevice.name}`, "i"),
-//     })
-//   );
-
-//   expect(screen.getByText(`Delete ${mockDevice.name}?`)).toBeInTheDocument();
-// });
-
-// test("calls logout when Logout is clicked", async () => {
-//   const user = userEvent.setup();
-//   const onLogout = vi.fn();
-
-//   render(<DeviceDashboard onLogout={onLogout} />);
-
-//   await user.click(screen.getByRole("button", { name: /logout/i }));
-
-//   expect(onLogout).toHaveBeenCalledTimes(1);
-// });

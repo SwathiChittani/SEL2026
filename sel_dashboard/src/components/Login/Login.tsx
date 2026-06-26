@@ -15,7 +15,10 @@ function Login({ onLoginSuccess }: Props) {
     try {
       setError("");
 
-      const result = await login(username, password);
+      const result = await login({
+        username,
+        password,
+      });
 
       localStorage.setItem("token", result.token);
       localStorage.setItem("role", result.user.role);

@@ -105,6 +105,22 @@ function authorizeRoles(...allowedRoles) {
   };
 }
 
+app.get(
+  "/api/devices/export",
+  authenticateToken,
+  authorizeRoles("admin"),
+  (req, res) => {
+    const devices = readDevices();
+
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=devices-export.json"
+    );
+    res.json(devices);
+  }
+);
+
 //Get all devices
 app.get(
   "/api/devices",
@@ -243,22 +259,6 @@ app.post(
       message: "Devices imported successfully.",
       devices: updatedDevices,
     });
-  }
-);
-
-app.get(
-  "/api/devices/export",
-  authenticateToken,
-  authorizeRoles("admin"),
-  (req, res) => {
-    const devices = readDevices();
-
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader(
-      "Content-Disposition",
-      "attachment; filename=devices-export.json"
-    );
-    res.json(devices);
   }
 );
 

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeviceDashboard from "./components/Device/DeviceDashboard/DeviceDashboard";
 import Login from "./components/Login/Login";
+import { setUnauthorizedHandler } from "./api/apiClient";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
     setIsLoggedIn(false);
   }
 
+  useEffect(() => {
+    setUnauthorizedHandler(handleLogout);
+  }, []);
+
   if (!isLoggedIn) {
     return <Login onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
@@ -25,4 +30,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

@@ -1,5 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { getDevices } from "../../../api/deviceApi";
+import {
+  getDevices,
+  addDevice,
+  updateDevice,
+  deleteDevice,
+  importDevices,
+  exportDevices,
+} from "../../../api/deviceApi";
 import { PAGE_SIZE } from "../../../constants/deviceConstants";
 import type { Device } from "../../../types/device";
 import DeviceFooter from "../DeviceFooter/DeviceFooter";
@@ -9,7 +16,6 @@ import DeviceToolbar from "../DeviceToolbar/DeviceToolbar";
 import "./DeviceDashboard.css";
 import DeviceModal from "../DeviceModal/DeviceModal";
 import DeleteConfirmationModal from "../DeviceDelete/DeleteConfirmationModal";
-import { API_ENDPOINTS } from "../../../constants/apiEndpoints";
 
 type Props = {
   onLogout: () => void;
@@ -61,59 +67,28 @@ function DeviceDashboard({ onLogout }: Props) {
     setModalError("");
   }
 
-  async function addDevice(device: Device) {
+  async function handleAddDevice(device: Device) {
     try {
       closePanels();
-
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(API_ENDPOINTS.DEVICES, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(device),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to add device");
-      }
-
+      await addDevice(device);
       await loadDevices();
-    } catch (error) {
+    } 
+    catch (error) {
       setModalMode("add");
-      setModalError(
+        setModalError(
         error instanceof Error ? error.message : "Unable to add device."
       );
     }
   }
-  async function updateDevice(updatedDevice: Device) {
+  async function handleUpdateDevice(updatedDevice: Device) {
     try {
       closePanels();
 
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${API_ENDPOINTS.DEVICES}/${updatedDevice.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(updatedDevice),
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to update device");
-      }
+      await updateDevice(updatedDevice);
 
       await loadDevices();
-    } catch (error) {
+    } 
+    catch (error) {
       setSelectedDevice(updatedDevice);
       setModalMode("edit");
       setModalError(
@@ -122,25 +97,12 @@ function DeviceDashboard({ onLogout }: Props) {
     }
   }
 
-  async function removeDevice(deviceId: number) {
+  async function handleRemoveDevice(deviceId: number) {
     try {
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${API_ENDPOINTS.DEVICES}/${deviceId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete device");
-      }
+      await deleteDevice(deviceId);
 
       await loadDevices();
+
       closePanels();
     } catch (error) {
       console.error(error);
@@ -157,7 +119,7 @@ function DeviceDashboard({ onLogout }: Props) {
     closePanels();
   }
 
-  function importDevices(file: File) {
+  function handleImportDevices(file: File) {
   const reader = new FileReader();
 
   reader.onload = async () => {
@@ -168,26 +130,7 @@ function DeviceDashboard({ onLogout }: Props) {
         alert("Invalid file. Expected a JSON array.");
         return;
       }
-
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        API_ENDPOINTS.IMPORT_DEVICES,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(importedDevices),
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Import failed.");
-      }
-
+      await importDevices(importedDevices);
       await loadDevices();
       setPage(1);
       closePanels();
@@ -203,19 +146,21 @@ function DeviceDashboard({ onLogout }: Props) {
   reader.readAsText(file);
 }
 
-  function exportDevices() {
-    const blob = new Blob([JSON.stringify(devices, null, 2)], {
-      type: "application/json",
-    });
+  async function handleExportDevices() {
+    try {
+      const blob = await exportDevices();
 
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
 
-    link.href = url;
-    link.download = "devices-export.json";
-    link.click();
+      link.href = url;
+      link.download = "devices-export.json";
+      link.click();
 
-    URL.revokeObjectURL(url);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Export failed.");
+    }
   }
 
   const filteredDevices = useMemo(() => {
@@ -269,8 +214,8 @@ function DeviceDashboard({ onLogout }: Props) {
           setSearchText(value);
           setPage(1);
         }}
-        onImport={importDevices}
-        onExport={exportDevices}
+        onImport={handleImportDevices}
+        onExport={handleExportDevices}
         onClearFilters={clearFilters}
       />
 
@@ -333,8 +278,8 @@ function DeviceDashboard({ onLogout }: Props) {
           nextId={nextDeviceId}
           devices={devices}
           serverErrorMessage={modalError}
-          onAdd={addDevice}
-          onSave={updateDevice}
+          onAdd={handleAddDevice}
+          onSave={handleUpdateDevice}
           onClose={closePanels}
           onSwitchToEdit={() => setModalMode("edit")}
         />
@@ -345,7 +290,7 @@ function DeviceDashboard({ onLogout }: Props) {
           deviceName={deviceToDelete.name}
           onCancel={() => setDeviceToDelete(null)}
           onConfirm={() => {
-            removeDevice(deviceToDelete.id);
+            handleRemoveDevice(deviceToDelete.id);
             setDeviceToDelete(null);
           }}
         />

@@ -1006,7 +1006,7 @@
     "type": "Protection Relay",
     "status": "Online",
     "location": "jsda",
-    "criticality": "Medium",
+    "criticality": "High",
     "purpose": "Grid device monitoring"
   },
   {
@@ -1016,7 +1016,7 @@
     "type": "Protection Relay",
     "status": "Online",
     "location": "Unassigned",
-    "criticality": "Medium",
+    "criticality": "High",
     "purpose": "Grid device monitoring"
   },
   {
@@ -1288,5 +1288,25 @@
     "location": "Operations Center",
     "criticality": "Low",
     "purpose": "Light and heat control"
+  },
+  {
+    "id": 126,
+    "name": "Data Center Temperature Sensor 01",
+    "ipAddress": "10.20.5.101",
+    "type": "Sensor",
+    "status": "Online",
+    "location": "Data Center",
+    "criticality": "High",
+    "purpose": "Monitor server room temperature"
+  },
+  {
+    "id": 127,
+    "name": "Building Access Controller 01",
+    "ipAddress": "10.20.6.101",
+    "type": "Controller",
+    "status": "Maintenance",
+    "location": "Main Entrance",
+    "criticality": "High",
+    "purpose": "Manage secure building access"
   }
 ]

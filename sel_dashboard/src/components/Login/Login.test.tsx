@@ -168,9 +168,9 @@ test("calls login api with entered credentials", async () => {
   );
 
   await waitFor(() => {
-    expect(loginMock).toHaveBeenCalledWith(
-      "operator",
-      "operator123"
-    );
+    expect(loginMock).toHaveBeenCalledWith({
+      username: "operator",
+      password: "operator123"
+  });
   });
 });
